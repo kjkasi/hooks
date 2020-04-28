@@ -16,9 +16,8 @@ const App = () => {
           onClick={() => setVisible(false)} >
           hide
         </button>
-        {/* <ClassCounter value={value} /> */}
-        {/* <HookCounter value={value} /> */}
-        <Notification />
+        <ClassCounter value={value} />
+        <HookCounter value={value} />
       </div>
     )
   } else {
@@ -28,37 +27,11 @@ const App = () => {
   }
 };
 
-const Notification = ({ value }) => {
-
-  const [ visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setVisible(false)
-    }, 2500);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  return (
-    <div>
-      { visible && <p>Hellow</p> }
-    </div>
-  );
-};
-
 const HookCounter = ({ value }) => {
- /*  useEffect(() => {
+  useEffect(() => {
     console.log('useEffect()');
     return () => console.log('clear');
-  }, [ value ]); */
-
-  useEffect(() => {
-    console.log('mount');
-    return () => console.log('ummount');
-  }, []);
-
-  useEffect(() => console.log('update'));
-
+  }, [ value ]);
   return <p> {value} </p>;
 }
 
